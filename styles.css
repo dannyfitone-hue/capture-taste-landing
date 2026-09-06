@@ -385,3 +385,195 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px}
   }
   .hero{padding-top:52px}
 }
+
+
+/* ===== Premium top-of-page event combo statement ===== */
+.event-combo-hero{
+  position:relative;
+  margin-top:34px;
+  min-height:300px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:34px;
+  padding:42px 48px;
+  overflow:hidden;
+  border:1px solid rgba(246,188,32,.30);
+  border-radius:30px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.035), transparent 32%),
+    radial-gradient(circle at 10% 50%, rgba(246,188,32,.13), transparent 28%),
+    radial-gradient(circle at 88% 40%, rgba(72,229,104,.06), transparent 25%),
+    linear-gradient(180deg,#111516 0%,#0b0e0f 100%);
+  box-shadow:
+    0 28px 80px rgba(0,0,0,.34),
+    inset 0 1px rgba(255,255,255,.05);
+}
+.event-combo-hero:before,
+.event-combo-hero:after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border:1px solid rgba(246,188,32,.14);
+  border-radius:50%;
+}
+.event-combo-hero:before{left:-95px;top:-75px}
+.event-combo-hero:after{right:-105px;bottom:-95px}
+
+.combo-glow{
+  position:absolute;
+  inset:auto auto -70px 35%;
+  width:380px;
+  height:180px;
+  background:radial-gradient(circle,rgba(246,188,32,.17),transparent 70%);
+  filter:blur(14px);
+  pointer-events:none;
+}
+
+.combo-copy{position:relative;z-index:2;max-width:880px}
+.combo-overline{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:#9fa5a6;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+.combo-overline:before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:var(--brand);
+}
+
+.combo-headline{
+  margin:0;
+  font-family:"DM Sans",sans-serif;
+  font-size:clamp(28px,3.2vw,48px);
+  line-height:1.05;
+  letter-spacing:-.035em;
+  font-weight:700;
+}
+.combo-headline > *{display:block}
+
+.combo-services{
+  display:flex !important;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:12px 0 10px;
+}
+.combo-word{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(42px,6.1vw,82px);
+  line-height:.95;
+  color:#fff;
+  text-shadow:0 3px 22px rgba(255,255,255,.05);
+}
+.food-word{
+  color:var(--brand);
+  text-shadow:0 0 28px rgba(246,188,32,.16);
+}
+.combo-plus{
+  font-size:clamp(25px,3vw,40px);
+  color:#697174;
+  font-weight:400;
+}
+.combo-ending{
+  color:#e9ebea;
+  font-size:clamp(20px,2.5vw,34px);
+  letter-spacing:.015em;
+}
+.combo-ending:after{
+  content:"";
+  display:block;
+  width:92px;
+  height:3px;
+  margin-top:14px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--brand),transparent);
+}
+
+.combo-badges{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+.combo-badges span{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 13px;
+  border:1px solid #2f3638;
+  background:rgba(9,12,13,.68);
+  border-radius:999px;
+  color:#c7cbcb;
+  font-size:12px;
+  font-weight:700;
+}
+.combo-badges b{
+  color:var(--brand);
+  font-size:10px;
+  letter-spacing:.08em;
+}
+
+.combo-stamp{
+  position:relative;
+  z-index:2;
+  width:172px;
+  height:172px;
+  display:grid;
+  place-content:center;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid rgba(246,188,32,.38);
+  background:
+    radial-gradient(circle,rgba(246,188,32,.10),transparent 64%),
+    rgba(7,9,10,.65);
+  box-shadow:
+    0 0 0 10px rgba(246,188,32,.025),
+    0 18px 50px rgba(0,0,0,.36);
+  transform:rotate(-5deg);
+}
+.combo-stamp:before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border:1px dashed rgba(246,188,32,.25);
+  border-radius:50%;
+}
+.combo-stamp span{
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+  letter-spacing:.08em;
+  color:#f1f0eb;
+}
+.combo-stamp strong{
+  color:var(--brand);
+  font-size:27px;
+  line-height:1;
+  margin:3px 0;
+}
+
+@media(max-width:800px){
+  .event-combo-hero{
+    grid-template-columns:1fr;
+    min-height:0;
+    padding:30px 24px;
+    border-radius:24px;
+  }
+  .combo-stamp{
+    display:none;
+  }
+  .combo-services{
+    gap:8px;
+  }
+  .combo-badges{
+    gap:7px;
+  }
+}
