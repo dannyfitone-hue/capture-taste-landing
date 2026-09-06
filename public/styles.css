@@ -2465,3 +2465,56 @@ body:after{
       62% center;
   }
 }
+
+
+/* =========================================================
+   v24 — NON-WEDDING COLLAB BACKGROUND
+   BACKGROUND ONLY. Existing content/layout/order untouched.
+   Left: Persian catering / M Cafe
+   Right: professional general-event video production / RL Footage
+   ========================================================= */
+body{
+  background-color:#07090a;
+  background-image:
+    linear-gradient(90deg,
+      rgba(7,8,8,.55) 0%,
+      rgba(7,7,7,.44) 21%,
+      rgba(7,8,9,.68) 43%,
+      rgba(6,7,8,.91) 49%,
+      rgba(6,7,8,.91) 51%,
+      rgba(6,7,8,.67) 57%,
+      rgba(5,7,9,.43) 80%,
+      rgba(5,6,8,.58) 100%),
+    url("https://image-worker.mindtrip.ai/image-resize/format%3Dwebp%2Cw%3D1440/https%3A/media-cdn.tripadvisor.com/media/photo-o/2b/13/26/a0/we-cater-for-parties.jpg"),
+    url("https://media.eventective.com/1975124_lg.jpg");
+  background-size:100% 100%,50% 100vh,50% 100vh;
+  background-position:center,left center,right center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+/* Brand atmosphere is intentionally restrained so the photography,
+   not artificial effects, carries the collaboration story. */
+body:before{
+  background:
+    radial-gradient(ellipse at 20% 32%,rgba(244,123,32,.075),transparent 34%),
+    radial-gradient(ellipse at 82% 30%,rgba(246,188,32,.045),transparent 31%),
+    linear-gradient(90deg,
+      rgba(34,9,3,.06),rgba(0,0,0,.03) 39%,
+      rgba(0,0,0,.31) 48%,rgba(0,0,0,.43) 50%,
+      rgba(0,0,0,.31) 52%,rgba(5,8,12,.04) 64%,rgba(5,8,12,.08));
+}
+body:after{opacity:.38}
+
+/* Mobile: preserve the same 50/50 collaboration rather than stacking,
+   while selecting useful crops from each scene. */
+@media(max-width:640px){
+  body{
+    background-size:100% 100%,50% 100vh,50% 100vh;
+    background-position:center,37% center,70% center;
+    background-attachment:fixed;
+  }
+}
+@media(max-width:430px){
+  body{background-position:center,39% center,69% center}
+}
