@@ -2518,3 +2518,93 @@ body:after{opacity:.38}
 @media(max-width:430px){
   body{background-position:center,39% center,69% center}
 }
+
+
+/* =========================================================
+   v25 — APPROVED COLLAB VISUAL DIRECTION
+   BACKGROUND ONLY.
+   All existing HTML content, package order, typography,
+   spacing, buttons, desktop layout and mobile layout remain intact.
+   ========================================================= */
+
+body{
+  background-color:#07090a;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(5,6,7,.48) 0%,
+      rgba(6,6,6,.37) 21%,
+      rgba(7,8,9,.63) 43%,
+      rgba(6,7,8,.91) 48.7%,
+      rgba(6,7,8,.91) 51.3%,
+      rgba(6,7,8,.61) 57%,
+      rgba(5,7,9,.36) 80%,
+      rgba(5,6,8,.49) 100%
+    ),
+    url("/assets/mcafe-premium-bg.jpg"),
+    url("/assets/rlfootage-premium-bg.jpg");
+  background-size:
+    100% 100%,
+    50% 100vh,
+    50% 100vh;
+  background-position:
+    center,
+    left center,
+    right center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+/* Unified premium grading so it reads as one collaboration page. */
+body:before{
+  background:
+    radial-gradient(ellipse at 19% 29%,rgba(244,123,32,.075),transparent 34%),
+    radial-gradient(ellipse at 83% 30%,rgba(246,188,32,.045),transparent 31%),
+    linear-gradient(
+      90deg,
+      rgba(31,8,3,.055) 0%,
+      rgba(0,0,0,.025) 39%,
+      rgba(0,0,0,.29) 47%,
+      rgba(0,0,0,.46) 50%,
+      rgba(0,0,0,.29) 53%,
+      rgba(5,8,12,.03) 65%,
+      rgba(5,8,12,.075) 100%
+    );
+}
+
+/* No obvious divider line — soft visual marriage of the two businesses. */
+body:after{
+  opacity:.16;
+}
+
+/* Preserve readable content while allowing the imagery to feel present. */
+.statement,
+.how{
+  background:rgba(10,12,13,.90);
+}
+footer{
+  background:rgba(7,9,10,.88);
+}
+
+/* Keep the same 50/50 concept on phones; only adjust crop focal points. */
+@media(max-width:640px){
+  body{
+    background-size:
+      100% 100%,
+      50% 100vh,
+      50% 100vh;
+    background-position:
+      center,
+      31% center,
+      72% center;
+    background-attachment:fixed;
+  }
+}
+@media(max-width:430px){
+  body{
+    background-position:
+      center,
+      33% center,
+      70% center;
+  }
+}
