@@ -279,3 +279,28 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px}
     grid-template-columns:1fr;
   }
 }
+
+
+/* Signature 100 package */
+.signature-100{
+  margin-top:18px;
+  border-color:#2e3d42;
+  background:
+    radial-gradient(circle at 14% 8%, rgba(246,188,32,.06), transparent 24%),
+    radial-gradient(circle at 84% 10%, rgba(72,229,104,.04), transparent 22%),
+    linear-gradient(180deg,#14191a 0%,#0f1314 100%);
+}
+.signature100-tag{
+  background:#162126;
+  color:#dce9ec;
+}
+.rate-pending{
+  display:inline-block;
+  color:#aeb5b6;
+  border:1px solid #394244;
+  border-radius:999px;
+  padding:10px 14px;
+  font-size:11px;
+  letter-spacing:.14em;
+  font-weight:700;
+}

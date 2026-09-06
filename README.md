@@ -147,3 +147,34 @@ Same media coverage as Signature 50:
 - Unlimited photo shots
 - Professionally color-retouched and edited photos
 - Digital download-link album
+
+
+## Package 3 — Signature 100
+
+Designed for events of **up to 100 guests**.
+
+This package uses the **same service details as Signature 50**, scaled for the larger guest count.
+
+### M Cafe & Grill — menu choice
+
+**Pizza & Sandwich Menu**
+- Pizza & sandwich mix of choice
+- Salad
+
+**Traditional Persian Menu**
+- Beef Koobideh (fresh ground premium beef)
+- Chicken Koobideh (fresh ground premium chicken)
+- 1 choice of stew
+- Rice
+- Salad
+
+### RL Footage
+- Up to 4 hours premium 4K filming coverage
+- 1–2 minute premium edited event highlight reel
+- Access to all raw footage
+- Complete premium photography
+- Unlimited photo shots
+- Professionally color-retouched and edited photos
+- Digital download-link album
+
+**Price has not been supplied yet and is intentionally left pending in the page.**
