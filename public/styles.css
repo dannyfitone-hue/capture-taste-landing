@@ -2374,3 +2374,94 @@ footer{
       );
   }
 }
+
+
+/* =========================================================
+   v23 BACKGROUND IMAGE UPGRADE
+   Replaces ONLY the collaboration background photography.
+   Existing content, layout, spacing, cards and order untouched.
+   ========================================================= */
+
+body{
+  background-color:#08090a;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(7,8,9,.62) 0%,
+      rgba(8,8,8,.48) 20%,
+      rgba(8,9,10,.72) 44%,
+      rgba(7,8,9,.90) 49%,
+      rgba(7,8,9,.90) 51%,
+      rgba(7,8,9,.68) 57%,
+      rgba(6,7,8,.47) 78%,
+      rgba(5,6,7,.64) 100%
+    ),
+    url("https://images.unsplash.com/photo-1657940743533-9d7e78065042?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000"),
+    url("https://images.unsplash.com/photo-1769889882240-3c28a7547edd?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000");
+  background-size:
+    100% 100%,
+    50% 100vh,
+    50% 100vh;
+  background-position:
+    center,
+    left center,
+    right center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+/* More editorial / premium grading:
+   warm M Cafe side, cinematic RL side, very soft center blend. */
+body:before{
+  background:
+    radial-gradient(ellipse at 19% 28%,rgba(237,28,36,.07),transparent 30%),
+    radial-gradient(ellipse at 30% 56%,rgba(244,123,32,.08),transparent 33%),
+    radial-gradient(ellipse at 82% 28%,rgba(246,188,32,.055),transparent 28%),
+    linear-gradient(
+      90deg,
+      rgba(28,7,3,.10) 0%,
+      rgba(19,9,4,.04) 36%,
+      rgba(0,0,0,.26) 47%,
+      rgba(0,0,0,.50) 50%,
+      rgba(0,0,0,.28) 53%,
+      rgba(7,8,10,.04) 66%,
+      rgba(5,7,10,.09) 100%
+    );
+}
+
+/* Softer seam; background should feel like a collaboration,
+   not two unrelated wallpaper panels. */
+body:after{
+  opacity:.58;
+}
+
+/* Keep photos richer but behind content. */
+.hero,
+.packages,
+.booking{
+  position:relative;
+}
+
+/* Phone crop tuned independently so food and camera remain visible
+   while preserving all v20/v21 mobile layout rules. */
+@media(max-width:640px){
+  body{
+    background-size:
+      100% 100%,
+      50% 100vh,
+      50% 100vh;
+    background-position:
+      center,
+      42% center,
+      64% center;
+  }
+}
+
+@media(max-width:430px){
+  body{
+    background-position:
+      center,
+      43% center,
+      62% center;
+  }
+}
