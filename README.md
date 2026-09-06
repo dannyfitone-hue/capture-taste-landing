@@ -164,7 +164,7 @@ This package uses the **same service details as Signature 50**, scaled for the l
 **Traditional Persian Menu**
 - Beef Koobideh (fresh ground premium beef)
 - Chicken Koobideh (fresh ground premium chicken)
-- 1 choice of stew
+- 2 choices of stew
 - Rice
 - Salad
 
@@ -177,4 +177,4 @@ This package uses the **same service details as Signature 50**, scaled for the l
 - Professionally color-retouched and edited photos
 - Digital download-link album
 
-**Price has not been supplied yet and is intentionally left pending in the page.**
+**Price: $3,800 all-in.**
