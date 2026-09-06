@@ -122,3 +122,28 @@ Use these Vercel settings:
 - Install Command: leave default
 
 Do not upload the ZIP itself to GitHub. Upload the files and folders inside it so `index.html` and `package.json` are visible at the repository root.
+
+
+## Package 2 — Signature 50 Premium Plus
+
+Price: **$3,500**
+
+Designed for approximately **50–60 guests**.
+
+### M Cafe & Grill
+- Beef Koobideh
+- Chicken Koobideh
+- 2 choices of stew
+- Rice
+- Beef Kabob
+- Salad
+
+### RL Footage
+Same media coverage as Signature 50:
+- Up to 4 hours premium 4K filming coverage
+- Premium edited 1–2 minute highlight reel covering the full event
+- Access to all raw footage
+- Complete premium photography
+- Unlimited photo shots
+- Professionally color-retouched and edited photos
+- Digital download-link album

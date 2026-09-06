@@ -252,3 +252,30 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px}
     margin-top:16px;
   }
 }
+
+
+/* Premium Plus package */
+.premium-plus{
+  margin-top:18px;
+  border-color:#394146;
+  background:
+    radial-gradient(circle at 16% 8%, rgba(246,188,32,.07), transparent 25%),
+    radial-gradient(circle at 84% 8%, rgba(255,255,255,.035), transparent 24%),
+    linear-gradient(180deg,#151a1c 0%,#101415 100%);
+}
+.premium-tag{
+  background:#20262a;
+  color:#f5f4ef;
+}
+.premium-plus .price strong{
+  color:#f5f4ef;
+  text-shadow:none;
+}
+.premium-plus .brand-service{
+  border-color:#30383b;
+}
+@media(min-width:901px){
+  .package-grid{
+    grid-template-columns:1fr;
+  }
+}
