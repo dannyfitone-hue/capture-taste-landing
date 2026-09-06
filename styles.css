@@ -2140,3 +2140,237 @@ button,a{
     padding-bottom:max(36px,env(safe-area-inset-bottom));
   }
 }
+
+
+/* =========================================================
+   v21 PARTNERSHIP COLOR SYSTEM
+   M Cafe: red + flame orange
+   RL Footage: signature gold
+   White: premium neutral bridge
+   Layout/spacing intentionally unchanged.
+   ========================================================= */
+
+:root{
+  --mcafe-red:#ed1c24;
+  --mcafe-orange:#f47b20;
+  --rl-gold:#f6bc20;
+  --premium-white:#f6f4ef;
+}
+
+/* CAPTURE & TASTE */
+.hero h1 .capture-word{
+  color:var(--premium-white);
+  text-shadow:0 2px 18px rgba(255,255,255,.035);
+}
+
+.hero h1 .brand-amp{
+  display:inline-block;
+  color:var(--mcafe-orange);
+  background:linear-gradient(
+    180deg,
+    var(--mcafe-red) 4%,
+    #f04422 43%,
+    var(--mcafe-orange) 76%,
+    #ff9b2f 100%
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:none;
+  filter:drop-shadow(0 0 7px rgba(237,28,36,.12))
+         drop-shadow(0 0 9px rgba(244,123,32,.10));
+}
+
+.hero h1 .taste-word{
+  color:var(--rl-gold);
+  text-shadow:0 0 16px rgba(246,188,32,.08);
+}
+
+/* FOOD / VIDEO / PHOTO */
+.combo-services-clean .mcafe-word{
+  color:var(--mcafe-orange) !important;
+  background:linear-gradient(
+    180deg,
+    var(--mcafe-red) 0%,
+    #f04422 34%,
+    var(--mcafe-orange) 72%,
+    #ff9b2f 100%
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:none !important;
+  filter:drop-shadow(0 0 7px rgba(237,28,36,.09))
+         drop-shadow(0 0 8px rgba(244,123,32,.08));
+}
+
+.combo-services-clean .neutral-word{
+  color:var(--premium-white) !important;
+  text-shadow:0 2px 14px rgba(255,255,255,.035) !important;
+}
+
+.combo-services-clean .rl-word{
+  color:var(--rl-gold) !important;
+  text-shadow:0 0 15px rgba(246,188,32,.08) !important;
+}
+
+/* Tiny separators quietly carry both brand palettes. */
+.combo-services-clean .service-separator:nth-of-type(2){
+  color:var(--mcafe-orange);
+  opacity:.72;
+}
+.combo-services-clean .service-separator:nth-of-type(4){
+  color:var(--rl-gold);
+  opacity:.72;
+}
+
+/* Keep the color treatment elegant on small screens. */
+@media(max-width:640px){
+  .hero h1 .brand-amp,
+  .combo-services-clean .mcafe-word{
+    filter:drop-shadow(0 0 5px rgba(244,123,32,.08));
+  }
+  .hero h1 .taste-word,
+  .combo-services-clean .rl-word{
+    text-shadow:0 0 10px rgba(246,188,32,.06) !important;
+  }
+}
+
+
+/* =========================================================
+   v22 COLLABORATION BACKGROUND
+   Background-only redesign. No content order, spacing,
+   sizing, package layout, or responsive structure changed.
+   LEFT  = M Cafe / Persian food & catering
+   RIGHT = RL Footage / professional video production
+   ========================================================= */
+
+body{
+  background-color:#080a0b;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(7,9,10,.74) 0%,
+      rgba(9,8,7,.66) 24%,
+      rgba(8,9,10,.84) 48.5%,
+      rgba(8,9,10,.84) 51.5%,
+      rgba(7,9,10,.66) 76%,
+      rgba(6,8,9,.76) 100%
+    ),
+    url("https://images.unsplash.com/photo-1604741333810-0ef6017256da?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=78&w=2200"),
+    url("https://images.unsplash.com/photo-1554941075-78cb9e1ce69d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=78&w=2200");
+  background-size:
+    100% 100%,
+    50% 100vh,
+    50% 100vh;
+  background-position:
+    center,
+    left top,
+    right top;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+/* Refined brand atmosphere on each half without altering layout. */
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(circle at 15% 24%,rgba(237,28,36,.08),transparent 24%),
+    radial-gradient(circle at 28% 55%,rgba(244,123,32,.07),transparent 30%),
+    radial-gradient(circle at 84% 24%,rgba(246,188,32,.075),transparent 25%),
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.06) 0%,
+      rgba(0,0,0,.16) 46%,
+      rgba(0,0,0,.42) 49.4%,
+      rgba(0,0,0,.42) 50.6%,
+      rgba(0,0,0,.16) 54%,
+      rgba(0,0,0,.06) 100%
+    );
+}
+
+/* Thin, subtle center seam = collaboration split, not a hard divider. */
+body:after{
+  content:"";
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:1px;
+  pointer-events:none;
+  z-index:-1;
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(255,255,255,.09) 18%,
+    rgba(246,188,32,.13) 50%,
+    rgba(255,255,255,.07) 82%,
+    transparent
+  );
+  box-shadow:
+    -18px 0 42px rgba(244,123,32,.025),
+    18px 0 42px rgba(246,188,32,.025);
+}
+
+/* Keep existing full-width dark sections premium while allowing
+   a faint hint of the collaboration imagery underneath. */
+.statement{
+  background:linear-gradient(180deg,rgba(13,16,17,.94),rgba(9,11,12,.92));
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+.how{
+  background:rgba(13,16,17,.93);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+footer{
+  background:rgba(7,9,10,.88);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+}
+
+/* Cards stay dark enough to preserve all current readability. */
+.package-card,
+.package-split-card,
+.brand-service,
+.booking-form,
+.selected-box,
+.steps>div{
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+}
+
+/* Mobile keeps the exact 50/50 concept but crops each image
+   more tightly so both businesses remain visually recognizable. */
+@media(max-width:640px){
+  body{
+    background-size:
+      100% 100%,
+      50% 100vh,
+      50% 100vh;
+    background-position:
+      center,
+      35% top,
+      67% top;
+    background-attachment:fixed;
+  }
+
+  body:before{
+    background:
+      radial-gradient(circle at 18% 18%,rgba(237,28,36,.07),transparent 22%),
+      radial-gradient(circle at 82% 18%,rgba(246,188,32,.07),transparent 22%),
+      linear-gradient(
+        90deg,
+        rgba(0,0,0,.15) 0%,
+        rgba(0,0,0,.28) 47%,
+        rgba(0,0,0,.48) 50%,
+        rgba(0,0,0,.28) 53%,
+        rgba(0,0,0,.15) 100%
+      );
+  }
+}
