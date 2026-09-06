@@ -1,14 +1,8 @@
 {
   "name": "capture-taste-landing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
-  "scripts": {
-    "dev": "vercel dev"
-  },
   "dependencies": {
     "resend": "^4.0.0"
-  },
-  "devDependencies": {
-    "vercel": "^41.0.0"
   }
 }

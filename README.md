@@ -99,3 +99,12 @@ Customer selects one catering direction:
 - Unlimited photo shots
 - Professionally color-retouched and edited photos
 - Digital download-link photo album
+
+
+## Vercel 404 fix included in v3
+
+This version removes the unnecessary local Vercel dependency, explicitly rewrites `/` to `/index.html`,
+and places the two logo assets at the repository root as well as in `/public`.
+
+After replacing the GitHub repository contents with this version, Vercel should redeploy automatically.
+You can also verify `/health.txt` on the deployed domain; if that file loads, the static deployment is working.
