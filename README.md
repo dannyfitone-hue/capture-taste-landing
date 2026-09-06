@@ -108,3 +108,17 @@ and places the two logo assets at the repository root as well as in `/public`.
 
 After replacing the GitHub repository contents with this version, Vercel should redeploy automatically.
 You can also verify `/health.txt` on the deployed domain; if that file loads, the static deployment is working.
+
+
+## Vercel deployment — Vite version
+
+This version is now a standard Vite project to avoid the prior 404 behavior.
+
+Use these Vercel settings:
+- Framework Preset: **Vite**
+- Root Directory: **./**
+- Build Command: **npm run build**
+- Output Directory: **dist**
+- Install Command: leave default
+
+Do not upload the ZIP itself to GitHub. Upload the files and folders inside it so `index.html` and `package.json` are visible at the repository root.
