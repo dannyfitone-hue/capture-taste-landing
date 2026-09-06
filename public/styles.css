@@ -1338,3 +1338,136 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px}
     width:100%;
   }
 }
+
+
+/* ===== v19: visible Signature 100 featured banner fix ===== */
+/* The older .package-split-card uses overflow:hidden, which clipped the floating badge.
+   This version keeps the most-popular treatment fully inside the card. */
+.signature-100-featured{
+  margin-top:28px !important;
+  overflow:hidden !important;
+  border:2px solid rgba(246,188,32,.92) !important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(246,188,32,.14),transparent 27%),
+    linear-gradient(180deg,#191d1d 0%,#101415 100%) !important;
+  box-shadow:
+    0 0 0 1px rgba(246,188,32,.10) inset,
+    0 0 48px rgba(246,188,32,.14),
+    0 30px 80px rgba(0,0,0,.36) !important;
+}
+.favorite-crown{display:none !important}
+
+.favorite-banner{
+  position:relative;
+  margin:-34px -34px 30px;
+  padding:17px 28px;
+  min-height:78px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  background:
+    linear-gradient(90deg,#f6bc20 0%,#ffd967 48%,#f6bc20 100%);
+  color:#111;
+  border-bottom:1px solid rgba(255,255,255,.35);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.28),
+    0 0 28px rgba(246,188,32,.18);
+}
+.favorite-banner:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent);
+}
+.favorite-banner-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.favorite-banner-left .favorite-stars{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:70px;
+  height:34px;
+  border-radius:999px;
+  background:rgba(0,0,0,.12);
+  font-size:10px;
+  letter-spacing:.13em;
+}
+.favorite-banner-left strong{
+  font-size:20px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:.08em;
+}
+.favorite-banner-right{
+  display:flex;
+  flex-direction:column;
+  text-align:right;
+}
+.favorite-banner-right span{
+  font-size:9px;
+  letter-spacing:.14em;
+  font-weight:800;
+  opacity:.62;
+}
+.favorite-banner-right b{
+  margin-top:3px;
+  font-size:12px;
+  letter-spacing:.08em;
+  font-weight:950;
+}
+
+.signature-100-featured .package-title-row{
+  padding-top:0 !important;
+}
+.signature-100-featured .package-title-row h3{
+  font-size:52px !important;
+}
+.signature-100-featured .price{
+  border:1px solid rgba(72,229,104,.34) !important;
+  background:linear-gradient(180deg,rgba(72,229,104,.11),rgba(72,229,104,.04)) !important;
+  box-shadow:
+    0 0 0 1px rgba(72,229,104,.04) inset,
+    0 0 28px rgba(72,229,104,.09);
+}
+.signature-100-featured .price strong{
+  color:#65ef7e !important;
+  font-size:52px !important;
+}
+.signature-100-featured .featured-cta{
+  background:linear-gradient(180deg,#ffdc6c,#f6bc20) !important;
+  min-height:58px;
+  padding-inline:28px !important;
+  font-size:16px !important;
+  box-shadow:
+    0 12px 30px rgba(246,188,32,.18),
+    0 0 22px rgba(246,188,32,.10) !important;
+}
+
+@media(max-width:760px){
+  .favorite-banner{
+    margin:-34px -34px 24px;
+    padding:15px 18px;
+    display:block;
+    text-align:center;
+  }
+  .favorite-banner-left{
+    justify-content:center;
+  }
+  .favorite-banner-left strong{
+    font-size:15px;
+  }
+  .favorite-banner-right{
+    text-align:center;
+    margin-top:8px;
+  }
+  .signature-100-featured .package-title-row h3{
+    font-size:42px !important;
+  }
+}
