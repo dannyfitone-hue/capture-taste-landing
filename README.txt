@@ -1,4 +1,4 @@
-CAPTURE & TASTE — MENU & SERVICE UPDATE (VERSION 2)
+CAPTURE & TASTE — MENU & SERVICE UPDATE (VERSION 4)
 
 This ZIP contains the updated landing page and its existing styles, script,
 logos, and background images.
@@ -28,10 +28,12 @@ Signature 50 Premium Plus — $3,500
 - Beef Kabob replaced with Beef Barg or Beef Shish Kabob.
 
 Signature 100 — $3,800
-- Chicken Koobideh replaced with Boneless Chicken Kabob.
-- Beef Koobideh replaced with Beef Shish Kabob.
+- Beef Koobideh added.
+- Beef Shish Kabob or Beef Barg listed as one choice.
+- Boneless Chicken Kabob, 2 choices of stew, rice, and salad included.
 
 Signature 100 Premium Plus — $4,000
+- Premium Lamb Rack (Shandeez) added.
 - Beef Kabob replaced with Beef Barg or Beef Shish Kabob.
 - Chicken Kabob replaced with Boneless Chicken Kabob.
 - Appetizers added: Your choice at time of confirming order.
@@ -39,7 +41,8 @@ Signature 100 Premium Plus — $4,000
 
 CHECKS
 Verified the service inclusion appears once inside the catering section of
-each of the four packages. All eight earlier menu edits, existing prices,
-and local assets are preserved. Styles and booking script match the live originals.
+each of the four packages. Verified the Signature 100 beef choice and
+Beef Koobideh, plus the Signature 100 Premium Plus lamb rack.
+All other page content, existing prices, and local assets are preserved. Styles and booking script match the live originals.
 Browser visual verification could not run because the local browser failed
 to launch. No test bookings were submitted, and the live site was not changed.
