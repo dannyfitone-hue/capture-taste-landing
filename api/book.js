@@ -71,7 +71,13 @@ module.exports = async function handler(req, res) {
         <h1 style="font-size:30px;margin:10px 0 6px">Welcome, ${escapeHtml(firstName)}.</h1>
         <p style="color:#c4c7c7">We received your booking registration for <strong>${escapeHtml(selectedPackage)}</strong>.</p>
 
+        <h2 style="font-size:20px">What happens next</h2>
+        <p style="color:#c4c7c7">Alexa will contact you shortly to go over your selected package and walk you through the booking process.</p>
+        <p style="color:#c4c7c7">If you would prefer a specific day and time for a call, please reply to this email with your preferred date, time, and time zone.</p>
+
         <div style="margin:24px 0;padding:18px;border-radius:14px;background:#0b0e0f">
+          <p><strong>Your phone number:</strong> ${escapeHtml(phone)}</p>
+          <p><strong>Your email:</strong> ${escapeHtml(email)}</p>
           <p><strong>Event date:</strong> ${escapeHtml(eventDate)}</p>
           <p><strong>Guest count:</strong> ${escapeHtml(String(guestCount))}</p>
           <p><strong>Event type:</strong> ${escapeHtml(eventType)}</p>
@@ -87,6 +93,32 @@ module.exports = async function handler(req, res) {
         <p style="margin-top:28px">Thank you,<br><strong>M Cafe & Grill × RL Footage</strong><br>Capture & Taste</p>
       </div>
     </div>`;
+
+  const customerText = [
+    `Welcome, ${firstName}.`,
+    `We received your booking registration for ${selectedPackage}.`,
+    "",
+    "What happens next",
+    "Alexa will contact you shortly to go over your selected package and walk you through the booking process.",
+    "If you would prefer a specific day and time for a call, please reply to this email with your preferred date, time, and time zone.",
+    "",
+    `Your phone number: ${phone}`,
+    `Your email: ${email}`,
+    `Event date: ${eventDate}`,
+    `Guest count: ${guestCount}`,
+    `Event type: ${eventType}`,
+    `Location: ${location}`,
+    "",
+    "Complete your booking",
+    "Your reservation is completed only after the required booking payment is made.",
+    paymentInstructions,
+    ...(paymentLink ? [`Make Booking Payment: ${paymentLink}`] : []),
+    "After payment, keep your payment confirmation. Our team will match it to this booking registration.",
+    "",
+    "Thank you,",
+    "M Cafe & Grill × RL Footage",
+    "Capture & Taste"
+  ].join("\n");
 
   const adminHtml = `
     <div style="font-family:Arial,sans-serif;color:#111;padding:20px">
@@ -133,7 +165,8 @@ module.exports = async function handler(req, res) {
       to: email,
       replyTo: notifyEmail,
       subject: `Capture & Taste Booking Confirmation — ${selectedPackage}`,
-      html: customerHtml
+      html: customerHtml,
+      text: customerText
     });
     customerEmailSent = Boolean(confirmation.accepted?.some(address => address.toLowerCase() === email.toLowerCase()));
     if (!customerEmailSent) console.warn("Customer confirmation was not accepted by Gmail");
