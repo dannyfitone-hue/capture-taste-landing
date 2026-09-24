@@ -1,4 +1,4 @@
-const { Resend } = require("resend");
+const nodemailer = require("nodemailer");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -39,17 +39,29 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: "Please check your event details and confirm the booking acknowledgment." });
   }
 
-  const resendKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.FROM_EMAIL;
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailPassword = process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, "");
+  const fromEmail = { name: "Capture & Taste | RL Footage", address: gmailUser };
   const notifyEmail = process.env.BOOKING_NOTIFY_EMAIL;
   const paymentInstructions = process.env.PAYMENT_INSTRUCTIONS || "Reply to this email for payment instructions.";
   const paymentLink = process.env.PAYMENT_LINK || "";
 
-  if (!resendKey || !fromEmail || !notifyEmail) {
+  if (!gmailUser || !gmailPassword || !notifyEmail) {
     return res.status(503).json({ error: "Online requests are temporarily unavailable. Please email rl.footage.orangecounty@gmail.com with your event details." });
   }
 
-  const resend = new Resend(resendKey);
+  const transport = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: { user: gmailUser, pass: gmailPassword },
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
+    dnsTimeout: 10000,
+    disableFileAccess: true,
+    disableUrlAccess: true
+  });
   const fullName = `${firstName} ${lastName}`.replace(/[\r\n]+/g, " ");
 
   const customerHtml = `
@@ -91,9 +103,8 @@ module.exports = async function handler(req, res) {
     </div>`;
 
   try {
-    // Resend resolves with { error } for rejected sends; it does not always throw.
     // Notify the owner first so customer-email problems cannot lose the lead.
-    const notification = await resend.emails.send({
+    const notification = await transport.sendMail({
         from: fromEmail,
         to: notifyEmail,
         replyTo: email,
@@ -106,8 +117,8 @@ module.exports = async function handler(req, res) {
           `Event type: ${eventType}`, `Location: ${location}`, `Notes: ${notes || "None"}`
         ].join("\n")
       });
-    if (notification.error || !notification.data?.id) {
-      console.error("Booking notification was not accepted", notification.error?.name || "missing_email_id");
+    if (!notification.accepted?.some(address => address.toLowerCase() === notifyEmail.toLowerCase())) {
+      console.error("Booking notification was not accepted by Gmail");
       return res.status(502).json({ error: "We could not send your request. Please try again or email rl.footage.orangecounty@gmail.com." });
     }
   } catch (error) {
@@ -117,15 +128,15 @@ module.exports = async function handler(req, res) {
 
   let customerEmailSent = false;
   try {
-    const confirmation = await resend.emails.send({
+    const confirmation = await transport.sendMail({
       from: fromEmail,
       to: email,
       replyTo: notifyEmail,
       subject: `Capture & Taste Booking Confirmation — ${selectedPackage}`,
       html: customerHtml
     });
-    customerEmailSent = !confirmation.error && Boolean(confirmation.data?.id);
-    if (!customerEmailSent) console.warn("Customer confirmation was not accepted", confirmation.error?.name || "missing_email_id");
+    customerEmailSent = Boolean(confirmation.accepted?.some(address => address.toLowerCase() === email.toLowerCase()));
+    if (!customerEmailSent) console.warn("Customer confirmation was not accepted by Gmail");
   } catch (error) {
     console.warn("Customer confirmation failed", error?.name || "send_error");
   }
