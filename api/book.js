@@ -15,11 +15,28 @@ module.exports = async function handler(req, res) {
     guestCount,
     eventType,
     location,
-    notes
+    notes,
+    consent
   } = req.body || {};
 
   if (!selectedPackage || !firstName || !lastName || !email || !phone || !eventDate || !guestCount || !eventType || !location) {
     return res.status(400).json({ error: "Please complete all required fields." });
+  }
+
+  const packages = new Set([
+    "Capture & Taste Signature 50",
+    "Capture & Taste Signature 50 Premium Plus",
+    "Capture & Taste Signature 100",
+    "Capture & Taste Signature 100 Premium Plus"
+  ]);
+  const fields = [selectedPackage, firstName, lastName, email, phone, eventDate, eventType, location];
+  if (fields.some(value => typeof value !== "string" || !value.trim() || value.length > 250) ||
+      !packages.has(selectedPackage) || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email) ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(eventDate) || !Number.isInteger(Number(guestCount)) ||
+      Number(guestCount) < 1 || Number(guestCount) > 10000 ||
+      (notes != null && (typeof notes !== "string" || notes.length > 5000)) ||
+      !["on", true].includes(consent)) {
+    return res.status(400).json({ error: "Please check your event details and confirm the booking acknowledgment." });
   }
 
   const resendKey = process.env.RESEND_API_KEY;
@@ -29,11 +46,11 @@ module.exports = async function handler(req, res) {
   const paymentLink = process.env.PAYMENT_LINK || "";
 
   if (!resendKey || !fromEmail || !notifyEmail) {
-    return res.status(500).json({ error: "Email service is not configured yet." });
+    return res.status(503).json({ error: "Online requests are temporarily unavailable. Please email rl.footage.orangecounty@gmail.com with your event details." });
   }
 
   const resend = new Resend(resendKey);
-  const fullName = `${firstName} ${lastName}`;
+  const fullName = `${firstName} ${lastName}`.replace(/[\r\n]+/g, " ");
 
   const customerHtml = `
     <div style="font-family:Arial,sans-serif;background:#0b0d0e;color:#f7f7f4;padding:32px">
@@ -74,27 +91,45 @@ module.exports = async function handler(req, res) {
     </div>`;
 
   try {
-    await Promise.all([
-      resend.emails.send({
-        from: fromEmail,
-        to: email,
-        subject: `Capture & Taste Booking Confirmation — ${selectedPackage}`,
-        html: customerHtml
-      }),
-      resend.emails.send({
+    // Resend resolves with { error } for rejected sends; it does not always throw.
+    // Notify the owner first so customer-email problems cannot lose the lead.
+    const notification = await resend.emails.send({
         from: fromEmail,
         to: notifyEmail,
         replyTo: email,
         subject: `NEW BOOKING: ${selectedPackage} — ${fullName}`,
-        html: adminHtml
-      })
-    ]);
-
-    return res.status(200).json({ ok: true });
+        html: adminHtml,
+        text: [
+          "New Capture & Taste booking request",
+          `Package: ${selectedPackage}`, `Client: ${fullName}`, `Email: ${email}`,
+          `Phone: ${phone}`, `Event date: ${eventDate}`, `Guest count: ${guestCount}`,
+          `Event type: ${eventType}`, `Location: ${location}`, `Notes: ${notes || "None"}`
+        ].join("\n")
+      });
+    if (notification.error || !notification.data?.id) {
+      console.error("Booking notification was not accepted", notification.error?.name || "missing_email_id");
+      return res.status(502).json({ error: "We could not send your request. Please try again or email rl.footage.orangecounty@gmail.com." });
+    }
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Booking was received, but the email could not be sent. Please contact us directly." });
+    console.error("Booking notification failed", error?.name || "send_error");
+    return res.status(502).json({ error: "We could not confirm your request was sent. Please email rl.footage.orangecounty@gmail.com before submitting again." });
   }
+
+  let customerEmailSent = false;
+  try {
+    const confirmation = await resend.emails.send({
+      from: fromEmail,
+      to: email,
+      replyTo: notifyEmail,
+      subject: `Capture & Taste Booking Confirmation — ${selectedPackage}`,
+      html: customerHtml
+    });
+    customerEmailSent = !confirmation.error && Boolean(confirmation.data?.id);
+    if (!customerEmailSent) console.warn("Customer confirmation was not accepted", confirmation.error?.name || "missing_email_id");
+  } catch (error) {
+    console.warn("Customer confirmation failed", error?.name || "send_error");
+  }
+  return res.status(200).json({ ok: true, customerEmailSent });
 }
 
 function escapeHtml(value) {
